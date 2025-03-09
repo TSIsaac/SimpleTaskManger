@@ -44,7 +44,7 @@ public class MainController {
         // Initialize TableView columns
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        dueDateColumn.setCellValueFactory(cellData -> cellData.getValue().dueDateProperty());
+       
 
         // Load tasks into the table
         taskList.setAll(taskService.getAllTasks());

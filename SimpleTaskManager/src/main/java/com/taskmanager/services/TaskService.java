@@ -28,25 +28,19 @@ public class TaskService {
     }
 
     // Update an existing task
-    public boolean updateTask(int taskId, String title, String description, String dueDate) {
+    public boolean updateTask(int taskId, String title, String description) {
         Optional<Task> taskOpt = getTaskById(taskId);
         if (taskOpt.isPresent()) {
             Task task = taskOpt.get();
             task.setTitle(title);
             task.setDescription(description);
-            task.setDueDate(dueDate);
             return true;
         }
         return false;
     }
 
     // Delete a task by ID
-    public boolean deleteTask(int taskId) {
-        Optional<Task> taskOpt = getTaskById(taskId);
-        if (taskOpt.isPresent()) {
-            tasks.remove(taskOpt.get());
-            return true;
-        }
-        return false;
+    public boolean deleteTask(Task task) {
+        return tasks.remove(task); // Removes task directly if it exists
     }
 }

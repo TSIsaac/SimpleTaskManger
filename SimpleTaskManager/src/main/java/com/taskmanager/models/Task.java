@@ -1,50 +1,55 @@
 package com.taskmanager.models;
 
+import javafx.beans.property.*;
+
 public class Task {
 
-    private int id;
-    private String title;
-    private String description;
-    private String dueDate;
+    private final IntegerProperty id;
+    private final StringProperty title;
+    private final StringProperty description;
 
     // Constructor
-    public Task(int id, String title, String description, String dueDate) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
+    public Task(int id, String title, String description) {
+        this.id = new SimpleIntegerProperty(id);
+        this.title = new SimpleStringProperty(title);
+        this.description = new SimpleStringProperty(description);
     }
 
-    // Getters and Setters
-    public int getId() {
+    // Getters and Setters for properties
+    public IntegerProperty idProperty() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id.get();
     }
 
-    public String getTitle() {
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public StringProperty titleProperty() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title.get();
     }
 
-    public String getDescription() {
+    public void setTitle(String title) {
+        this.title.set(title);
+    }
+
+    public StringProperty descriptionProperty() {
         return description;
     }
 
+    public String getDescription() {
+        return description.get();
+    }
+
     public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+        this.description.set(description);
     }
 }
+
