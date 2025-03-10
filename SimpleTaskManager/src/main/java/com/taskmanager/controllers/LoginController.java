@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class LoginController {
 
@@ -23,6 +25,9 @@ public class LoginController {
     @FXML
     private Label signupHereLbl;
 
+    private static final String USER_FILE = "users.txt"; // File to store user data
+    private static String loggedInUser; // Store logged-in username
+
     @FXML
     public void initialize() {
         signupHereLbl.setOnMouseClicked(event -> {
@@ -36,15 +41,39 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
+        String username = usernameTxt.getText().trim();
+        String password = passwordTxt.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
             System.out.println("Please enter both fields.");
             return;
         }
 
-        System.out.println("Logging in user: " + username);
-        //TODO Add authentication logic here
+        if (authenticateUser(username, password)) {
+            System.out.println("Login successful: " + username);
+            loggedInUser = username;
+
+            // Redirect to main.fxml (Task Manager)
+            try {
+                App.changeScene("main.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Invalid username or password.");
+        }
+    }
+
+    private boolean authenticateUser(String username, String password) {
+        try {
+            return Files.lines(Paths.get(USER_FILE))
+                    .anyMatch(line -> line.equals(username + ":" + password));
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    public static String getLoggedInUser() {
+        return loggedInUser;
     }
 }
