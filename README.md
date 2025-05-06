@@ -1,69 +1,80 @@
-# Simple Task Management System
+# Simple Task Manager - Project 2
 
 ## Overview
-A simple web-based task management system where users can create, update, delete, and mark tasks as completed. This system will include authentication and allow users to categorize tasks based on priority.
 
-## Features
-* User authentication (registration, login, logout)
+This project is a Java-based task manager application built using JavaFX and Maven. It includes a companion website where users can download the executable `.jar` file. The application and website are prepared for deployment in a cloud environment (e.g., Azure or AWS).
 
-* Task creation, updating, and deletion
+---
 
-* Task completion tracking
+## Contents
 
-* Task categorization by priority (Low, Medium, High)
+- `simpleTaskManagerProject/`: Java Maven project source code  
+- `website/`: Static website containing a download page  
+- `setup.sh`: Script to automate building, testing, and launching the application and website  
+- `README.md`: Documentation for setup and deployment  
 
-* Task filtering by priority and completion status
+---
 
-* Responsive UI for mobile and desktop
+## Setup Instructions
 
-## Developer Setup
 ### Prerequisites
-* Java 11+
 
-* Maven
+- Java 11 or later installed  
+- Maven installed  
+- A Bash shell (for running `setup.sh`) or terminal emulator  
+- Git (optional)  
+- Node.js (optional, if extending website functionality)  
 
-* JavaFX
+---
 
-* Git
+### Running the Setup Script
 
-## Testing
+1. Open a terminal.  
+2. Navigate to the project root directory.  
+3. Run the setup script:
 
-### Acceptance Tests
+```bash
+chmod +x setup.sh
+./setup.sh
+```
 
-##### Registration & Authentication
+This script will:
 
-* User can register with email and password
+- Navigate to the Java project directory  
+- Compile the project and create an executable `.jar` file  
+- Move the `.jar` file to `website/downloads/`  
+- Launch the Java application  
+- Open the website's `index.html` file in your browser  
 
-* Password must be at least 8 characters long
+---
 
-* User can log in with valid credentials
+## Website Deployment (Manual)
 
-* User sees an error message for incorrect login credentials
+1. Upload the `website/` folder to a static hosting service (e.g., Azure Web App, GitHub Pages, or AWS S3).  
+2. Ensure the `taskmanager.jar` file remains in the `downloads/` folder.  
+3. Once deployed, share the public URL.  
 
-* User can log out successfully
+---
 
-#### Task Management
+## Deployment Notes (Optional Script Automation)
 
-* User can add a new task with a title and description.
+You may automate website deployment by adding these steps to your `setup.sh` (optional for +5 bonus points):
 
-* User can edit a task’s title and description.
+- Use `az webapp up` or AWS CLI to deploy `website/`  
+- Include deployment logs and screenshot in your final submission  
 
-* User can delete a task and confirm before deletion.
+---
 
-* User can mark a task as completed.
+## Screenshots
 
-* Completed tasks appear visually distinct from incomplete tasks.
+Include the following in your submission:
 
-#### Task Categorization
+- Screenshot of the website deployed and accessible via cloud (with visible URL)  
+- Screenshot of the application running  
+- Screenshot of the `.jar` downloaded from the cloud  
 
-* User can set task priority (Low, Medium, High).
+---
 
-* User can filter tasks based on priority.
+## Cleanup
 
-* User can filter tasks by completion status.
-
-* Task list updates dynamically when filters are applied.
-
-#### UI/UX
-
-* Have a responsive layout that works on mobile & desktop screens.
+Don’t forget to delete or shut down any cloud services used to avoid unexpected charges.
