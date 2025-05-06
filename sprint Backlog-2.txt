@@ -1,0 +1,8 @@
+| Task                     | Description                             | Status  |
+| ------------------------ | --------------------------------------- | ------- |
+| Package app with Maven   | Generate `.jar` executable              | Planned |
+| Design download web page | HTML page for downloading app           | Planned |
+| Add app jar to web page  | Place `.jar` in `public/downloads`      | Planned |
+| Create setup script      | Automates packaging, testing, launching | Planned |
+| Deploy to Azure or AWS   | Host site where app is downloadable     | Planned |
+| Acceptance testing       | Verify app launches and site works      | Planned |
